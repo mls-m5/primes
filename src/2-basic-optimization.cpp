@@ -1,18 +1,19 @@
 #include "primesettings.h"
 #include "timing.h"
+#include <cmath>
 #include <iostream>
 
-// The worst possible implementation
 int main(int argc, char *argv[]) {
     auto settings = PrimeSettings{argc, argv};
 
-    auto timing = Timing{"naive"};
+    auto timing = Timing{"basic"};
 
     int numPrimes = 0;
 
     for (Integer i = 2; i < settings.num; ++i) {
         bool isPrime = true;
-        for (Integer j = 2; j < i; ++j) {
+        for (Integer j = 2; j <= std::sqrt(i);
+             ++j) { // the sqrt is the optimization
             if (i % j == 0) {
                 isPrime = false;
                 break;
