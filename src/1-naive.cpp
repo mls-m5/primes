@@ -1,5 +1,6 @@
 #include "primesettings.h"
 #include "timing.h"
+#include "utils.h"
 #include <iostream>
 
 // The worst possible implementation
@@ -13,7 +14,7 @@ int main(int argc, char *argv[]) {
     for (Integer i = 2; i < settings.num; ++i) {
         bool isPrime = true;
         for (Integer j = 2; j < i; ++j) {
-            if (i % j == 0) {
+            if (isDividableBy(i, j)) {
                 isPrime = false;
                 break;
             }

@@ -16,10 +16,11 @@ std::optional<long> run(std::string command) {
 int main(int argc, char *argv[]) {
     std::cout << "benchmark:" << std::endl;
 
-    auto a = run("./naive 20000");
-    auto b = run("./basic 20000");
+    auto a = run("./naive 200000");
+    auto b = run("./basic 200000");
+    auto c = run("./magic 200000");
 
-    std::cout << *a << " vs " << *b << std::endl;
+    std::cout << *a << " vs " << *b << " vs " << *c << std::endl;
 
     return 0;
 }

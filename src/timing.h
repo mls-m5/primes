@@ -19,15 +19,15 @@ struct Timing {
         if (!value) {
             auto stop = std::chrono::high_resolution_clock::now();
             auto d = stop - start;
-            return value =
-                       std::chrono::duration_cast<std::chrono::microseconds>(d)
-                           .count();
+            value = std::chrono::duration_cast<std::chrono::microseconds>(d)
+                        .count();
+            writeValue(value, "timing.txt");
+            return value;
         }
         return value;
     }
 
     ~Timing() {
         std::cout << name << ": " << count() << "µs" << std::endl;
-        writeValue(count(), "timing.txt");
     }
 };
