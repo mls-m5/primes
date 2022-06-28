@@ -1,7 +1,9 @@
 
 #include "primesettings.h"
 #include "timing.h"
+#include "utils.h"
 #include <algorithm>
+#include <cmath>
 #include <vector>
 
 int main(int argc, char *argv[]) {
@@ -11,7 +13,10 @@ int main(int argc, char *argv[]) {
 
     auto numbers = std::vector<bool>(settings.num, true);
 
-    for (long i = 2; i < settings.num; ++i) {
+    numbers.at(0) = false;
+    numbers.at(1) = false;
+
+    for (long i = 2; i < std::sqrt(settings.num); ++i) {
         auto bit = numbers.at(i);
 
         if (bit) {
@@ -21,7 +26,15 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    auto numPrimes = std::count(numbers.begin(), numbers.end(), 0);
+    auto numPrimes = std::count(numbers.begin(), numbers.end(), true);
+
+    if (settings.shouldPrintNumebers) {
+        for (size_t i = 0; i < numbers.size(); ++i) {
+            if (numbers.at(i)) {
+                std::cout << i << "\n";
+            }
+        }
+    }
 
     std::cout << "number of primes: " << numPrimes << std::endl;
 }

@@ -21,7 +21,9 @@ int main(int argc, char *argv[]) {
         }
 
         if (isPrime) {
-            //            std::cout << i << "\n";
+            if (settings.shouldPrintNumebers) {
+                std::cout << i << "\n";
+            }
             ++numPrimes;
         }
     }
